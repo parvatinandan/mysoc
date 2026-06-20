@@ -1,43 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Parking Contact</title>
+  <meta charset="UTF-8">
+  <title>Society Parking</title>
+  <script>
+    // Get flat number from URL
+    let path = window.location.pathname;
+
+    // Remove repository name
+    path = path.replace('/mysoc', '');
+
+    // Get last path part
+    let flat = path.split('/').filter(Boolean).pop();
+
+    // Default page if no flat provided
+    if (!flat) {
+      document.write("<h2>Invalid Flat Number</h2>");
+    } else {
+
+      // YOUR APPS SCRIPT URL
+      const APP_URL =
+      "https://script.google.com/macros/s/AKfycbyM4VNt0mHbx_Q-B7tCXu4zze6Uqoog7gp4vPN0kg/exec";
+
+      // Redirect
+      window.location.replace(
+        APP_URL + "?flat=" + encodeURIComponent(flat)
+      );
+    }
+  </script>
 </head>
 <body>
-
-<div id="app">Loading...</div>
-
-<script>
-
-const flat =
-location.pathname.split("/").pop();
-
-const API =
-"https://script.google.com/macros/s/AKfycbyM4VNt0mHbx_Q-B7tCXu4zze6Uqoog7gp4vPN0kg/dev?flat=" + flat;
-
-fetch(API)
-.then(r => r.json())
-.then(data => {
-
-document.getElementById("app").innerHTML = `
-<h2>Parking Contact</h2>
-
-<p><b>Flat:</b> ${data.flat}</p>
-
-<p><b>Name:</b> ${data.name}</p>
-
-<p>
-<a href="tel:${data.mobile}">
-📞 ${data.mobile}
-</a>
-</p>
-`;
-
-});
-
-</script>
-
+  Redirecting...
 </body>
 </html>
