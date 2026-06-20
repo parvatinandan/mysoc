@@ -1,15 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script>
-const path = window.location.pathname.split('/').pop();
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resident Search</title>
 
-window.location.replace(
-  "https://script.google.com/macros/s/YOUR_WEBAPP_ID/exec?flat=" + path
-);
-</script>
+    <script>
+        window.onload = function () {
+
+            // Read flat number from URL hash
+            // Example: https://parvatinandan.github.io/mysoc/#209
+            const flat = window.location.hash.substring(1);
+
+            if (!flat) {
+                document.getElementById("msg").innerHTML =
+                    "Please use a URL like:<br><br><b>https://parvatinandan.github.io/mysoc/#209</b>";
+                return;
+            }
+
+            // Redirect to Apps Script
+            window.location.replace(
+                "https://script.google.com/macros/s/AKfycbyM4VNt0mHbx_Q-B7tCXu4zze6Uqoog7gp4vPN0kg/exec?flat=" +
+                encodeURIComponent(flat)
+            );
+        };
+    </script>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            text-align:center;
+            padding:50px;
+        }
+
+        .box{
+            max-width:500px;
+            margin:auto;
+            border:1px solid #ddd;
+            border-radius:10px;
+            padding:20px;
+        }
+    </style>
 </head>
 <body>
-Redirecting...
+
+<div class="box">
+    <h2>Resident Search</h2>
+    <p id="msg">Loading...</p>
+</div>
+
 </body>
 </html>
