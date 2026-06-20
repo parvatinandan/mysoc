@@ -1,62 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Resident Search</title>
 
 <script>
 window.onload = function () {
 
-    // Read flat number from URL hash
-    // Example:
-    // https://parvatinandan.github.io/mysoc/#209
-
-    const flat = window.location.hash.substring(1);
+    let flat = window.location.hash.replace("#","");
 
     if (!flat) {
         document.getElementById("msg").innerHTML =
-            "Use URL like:<br><br><b>https://parvatinandan.github.io/mysoc/#209</b>";
+            "Use URL:<br><br><b>https://parvatinandan.github.io/mysoc/#209</b>";
         return;
     }
 
-    // Redirect to Google Apps Script
-    window.location.replace(
-        "https://script.google.com/macros/s/AKfycbya3dkkulMawjTLh2elzIZCHyrsTD8X0pnvNsD2-5By3uZM6o2jv6ITBDiEeLRX8Bk/exec?flat=" +
-        encodeURIComponent(flat)
-    );
+    const APP_URL =
+        "https://script.google.com/macros/s/AKfycbya3dkkulMawjTLh2elzIZCHyrsTD8X0pnvNsD2-5By3uZM6o2jv6ITBDiEeLRX8Bk/exec";
+
+    window.location.href =
+        APP_URL + "?flat=" + encodeURIComponent(flat);
 };
 </script>
 
 <style>
 body{
-    font-family: Arial, sans-serif;
-    background:#f5f5f5;
-    margin:0;
+    font-family:Arial,sans-serif;
+    text-align:center;
     padding:40px;
 }
-
 .box{
     max-width:500px;
     margin:auto;
-    background:#fff;
-    padding:30px;
+    border:1px solid #ddd;
     border-radius:10px;
-    box-shadow:0 2px 10px rgba(0,0,0,0.1);
-    text-align:center;
-}
-
-h2{
-    margin-top:0;
+    padding:20px;
 }
 </style>
-
 </head>
+
 <body>
 
 <div class="box">
     <h2>Resident Search</h2>
-    <p id="msg">Redirecting...</p>
+    <p id="msg">Loading...</p>
 </div>
 
 </body>
