@@ -1,35 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Society Parking</title>
-  <script>
-    // Get flat number from URL
-    let path = window.location.pathname;
+<meta charset="UTF-8">
+<title>Redirecting...</title>
 
-    // Remove repository name
-    path = path.replace('/mysoc', '');
+<script>
+let path = window.location.pathname;
 
-    // Get last path part
-    let flat = path.split('/').filter(Boolean).pop();
+// Remove repository name
+path = path.replace('/mysoc', '');
 
-    // Default page if no flat provided
-    if (!flat) {
-      document.write("<h2>Invalid Flat Number</h2>");
-    } else {
+// Get flat number
+const flat = path.split('/').filter(Boolean).pop();
 
-      // YOUR APPS SCRIPT URL
-      const APP_URL =
-      "https://script.google.com/macros/s/AKfycbyM4VNt0mHbx_Q-B7tCXu4zze6Uqoog7gp4vPN0kg/exec";
+const APP_URL =
+"https://script.google.com/macros/s/AKfycbyM4VNt0mHbx_Q-B7tCXu4zze6Uqoog7gp4vPN0kg/dev";
 
-      // Redirect
-      window.location.replace(
-        APP_URL + "?flat=" + encodeURIComponent(flat)
-      );
-    }
-  </script>
+if (flat) {
+  window.location.replace(
+    APP_URL + "?flat=" + encodeURIComponent(flat)
+  );
+}
+</script>
+
 </head>
 <body>
-  Redirecting...
+Redirecting...
 </body>
 </html>
