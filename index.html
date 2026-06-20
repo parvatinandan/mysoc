@@ -1,52 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resident Search</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resident Search</title>
 
-    <script>
-        window.onload = function () {
+<script>
+window.onload = function () {
 
-            // Read flat number from URL hash
-            // Example: https://parvatinandan.github.io/mysoc/#209
-            const flat = window.location.hash.substring(1);
+    // Read flat number from URL hash
+    // Example:
+    // https://parvatinandan.github.io/mysoc/#209
 
-            if (!flat) {
-                document.getElementById("msg").innerHTML =
-                    "Please use a URL like:<br><br><b>https://parvatinandan.github.io/mysoc/#209</b>";
-                return;
-            }
+    const flat = window.location.hash.substring(1);
 
-            // Redirect to Apps Script
-            window.location.replace(
-                "https://script.google.com/macros/s/AKfycbyM4VNt0mHbx_Q-B7tCXu4zze6Uqoog7gp4vPN0kg/exec?flat=" +
-                encodeURIComponent(flat)
-            );
-        };
-    </script>
+    if (!flat) {
+        document.getElementById("msg").innerHTML =
+            "Use URL like:<br><br><b>https://parvatinandan.github.io/mysoc/#209</b>";
+        return;
+    }
 
-    <style>
-        body{
-            font-family: Arial, sans-serif;
-            text-align:center;
-            padding:50px;
-        }
+    // Redirect to Google Apps Script
+    window.location.replace(
+        "https://script.google.com/macros/s/AKfycbya3dkkulMawjTLh2elzIZCHyrsTD8X0pnvNsD2-5By3uZM6o2jv6ITBDiEeLRX8Bk/exec?flat=" +
+        encodeURIComponent(flat)
+    );
+};
+</script>
 
-        .box{
-            max-width:500px;
-            margin:auto;
-            border:1px solid #ddd;
-            border-radius:10px;
-            padding:20px;
-        }
-    </style>
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f5f5f5;
+    margin:0;
+    padding:40px;
+}
+
+.box{
+    max-width:500px;
+    margin:auto;
+    background:#fff;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+h2{
+    margin-top:0;
+}
+</style>
+
 </head>
 <body>
 
 <div class="box">
     <h2>Resident Search</h2>
-    <p id="msg">Loading...</p>
+    <p id="msg">Redirecting...</p>
 </div>
 
 </body>
