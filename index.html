@@ -1,28 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Redirecting...</title>
-
 <script>
-let path = window.location.pathname;
+const path = window.location.pathname.split('/').pop();
 
-// Remove repository name
-path = path.replace('/mysoc', '');
-
-// Get flat number
-const flat = path.split('/').filter(Boolean).pop();
-
-const APP_URL =
-"https://script.google.com/macros/s/AKfycbyM4VNt0mHbx_Q-B7tCXu4zze6Uqoog7gp4vPN0kg/dev";
-
-if (flat) {
-  window.location.replace(
-    APP_URL + "?flat=" + encodeURIComponent(flat)
-  );
-}
+window.location.replace(
+  "https://script.google.com/macros/s/YOUR_WEBAPP_ID/exec?flat=" + path
+);
 </script>
-
 </head>
 <body>
 Redirecting...
