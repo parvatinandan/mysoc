@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Parking Contact</title>
+</head>
+<body>
+
+<div id="app">Loading...</div>
+
+<script>
+
+const flat =
+location.pathname.split("/").pop();
+
+const API =
+"https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?flat=" + flat;
+
+fetch(API)
+.then(r => r.json())
+.then(data => {
+
+document.getElementById("app").innerHTML = `
+<h2>Parking Contact</h2>
+
+<p><b>Flat:</b> ${data.flat}</p>
+
+<p><b>Name:</b> ${data.name}</p>
+
+<p>
+<a href="tel:${data.mobile}">
+📞 ${data.mobile}
+</a>
+</p>
+`;
+
+});
+
+</script>
+
+</body>
+</html>
